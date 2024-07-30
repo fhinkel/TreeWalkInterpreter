@@ -68,7 +68,7 @@ public class Parser {
     private Expr factor() {
         Expr expr = unary();
 
-        while(match(SLASH, STAR)) {
+        while (match(SLASH, STAR)) {
             Token operator = previous();
             Expr rigth = unary();
             expr = new Expr.Binary(expr, operator, rigth);
@@ -96,7 +96,7 @@ public class Parser {
         if (match(NUMBER, STRING)) {
             return new Expr.Literal(previous().literal);
         }
-        
+
         if (match(LEFT_PAREN)) {
             Expr expr = expression();
             consume(RIGHT_PAREN, "Expect ')' after expression.");
@@ -118,7 +118,8 @@ public class Parser {
     }
 
     private Token consume(TokenType type, String message) {
-        if (check(type)) return advance();
+        if (check(type))
+            return advance();
 
         throw error(peek(), message);
     }
@@ -131,11 +132,12 @@ public class Parser {
     private void synchronize() {
         advance();
 
-        while(!isAtEnd()) {
-            if(previous().type == SEMICOLON) return;
+        while (!isAtEnd()) {
+            if (previous().type == SEMICOLON)
+                return;
         }
 
-        switch(peek().type) {
+        switch (peek().type) {
             case CLASS:
             case FUN:
             case VAR:
@@ -144,7 +146,7 @@ public class Parser {
             case WHILE:
             case PRINT:
             case RETURN:
-            return;
+                return;
         }
 
         advance();
