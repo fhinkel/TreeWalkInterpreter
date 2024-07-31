@@ -4,8 +4,6 @@ import static interpreter.TokenType.*;
 
 import java.util.List;
 
-import javax.imageio.plugins.tiff.ExifParentTIFFTagSet;
-
 public class Parser {
 
     private static class ParseError extends RuntimeException {

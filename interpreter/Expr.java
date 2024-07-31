@@ -1,6 +1,5 @@
 package interpreter;
 
-import java.util.List;
 
 abstract class Expr {
     interface Visitor<R> {
@@ -25,6 +24,7 @@ abstract class Expr {
             return visitor.visitBinaryExpr(this);
         }
 
+        // Expr is the AST, here is the tree structure with the left and right nodes
         final Expr left;
         final Token operator;
         final Expr right;
