@@ -30,7 +30,7 @@ public class Lox {
         if (hadError) {
             System.exit(65);
         }
-        if (hadRuntimeError)) {
+        if (hadRuntimeError) {
             System.exit(70);
         }
         byte[] bytes = Files.readAllBytes(Paths.get(path));
@@ -86,7 +86,7 @@ public class Lox {
         if (token.type == TokenType.EOF) {
             report(token.line, " at end", message);
         } else {
-            report(token.line, "at '" + token.lexeme + "'", message);
+            report(token.line, " at '" + token.lexeme + "'", message);
         }
     }
 }
