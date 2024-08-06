@@ -26,3 +26,9 @@ print "Truth always comes out";
 
 if (false or true) print "false or true";
 if (false and true) print "false and true";
+
+var i = 3;
+while (i > 0) {
+    i = i - 1;
+    print i;
+}

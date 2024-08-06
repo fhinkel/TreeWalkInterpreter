@@ -7,6 +7,7 @@ import java.util.List;
 import interpreter.Expr.Logical;
 import interpreter.Stmt.Block;
 import interpreter.Stmt.If;
+import interpreter.Stmt.While;
 
 class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
@@ -224,5 +225,13 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
                 return left; // first expr is false in AND case
         }
         return evaluate(expr.right);
+    }
+
+    @Override
+    public Void visitWhileStmt(While stmt) {
+        while (isTruthy(evaluate(stmt.condition))) {
+            execute(stmt.body);
+        }
+        return null;
     }
 }
