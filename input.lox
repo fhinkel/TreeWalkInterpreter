@@ -17,3 +17,7 @@ var c = "global c";
 print a;
 print b;
 print c;
+
+if ( 3 >= 0 ) print "hello if statement";
+
+if(false) print "Hello lier";

@@ -89,4 +89,5 @@ public class Lox {
             report(token.line, " at '" + token.lexeme + "'", message);
         }
     }
+
 }
