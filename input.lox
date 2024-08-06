@@ -21,3 +21,5 @@ print c;
 if ( 3 >= 0 ) print "hello if statement";
 
 if(false) print "Hello lier";
+else 
+print "Truth always comes out";
