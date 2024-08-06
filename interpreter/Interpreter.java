@@ -4,6 +4,7 @@ import static interpreter.TokenType.*;
 
 import java.util.List;
 
+import interpreter.Expr.Logical;
 import interpreter.Stmt.Block;
 import interpreter.Stmt.If;
 
@@ -208,5 +209,20 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
             execute(stmt.elseBranch);
         }
         return null;
+    }
+
+    @Override
+    public Object visitLogicalExpr(Logical expr) {
+
+        Object left = evaluate(expr.left);
+
+        if (expr.operator.type == TokenType.OR) {
+            if (isTruthy(left))
+                return left; // first expr is true in OR case
+        } else {
+            if (!isTruthy(left))
+                return left; // first expr is false in AND case
+        }
+        return evaluate(expr.right);
     }
 }

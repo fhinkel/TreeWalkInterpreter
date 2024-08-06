@@ -23,3 +23,6 @@ if ( 3 >= 0 ) print "hello if statement";
 if(false) print "Hello lier";
 else 
 print "Truth always comes out";
+
+if (false or true) print "false or true";
+if (false and true) print "false and true";
