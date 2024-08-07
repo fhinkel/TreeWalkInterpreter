@@ -20,7 +20,7 @@ print c;
 
 if ( 3 >= 0 ) print "hello if statement";
 
-if(false) print "Hello lier";
+if(false) print "Hello liar";
 else 
 print "Truth always comes out";
 
