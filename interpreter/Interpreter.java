@@ -5,12 +5,6 @@ import static interpreter.TokenType.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import interpreter.Expr.Call;
-import interpreter.Expr.Logical;
-import interpreter.Stmt.Block;
-import interpreter.Stmt.Function;
-import interpreter.Stmt.If;
-import interpreter.Stmt.While;
 
 class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
@@ -26,7 +20,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
             @Override
             public Object call(Interpreter interpreter, List<Object> arguments) {
-                return (double) System.currentTimeMillis() / 1000.0;
+                return (double) System.currentTimeMillis() / 1000.0; // time in seconds
             }
 
             @Override
@@ -234,7 +228,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
 
     @Override
-    public Object visitLogicalExpr(Logical expr) {
+    public Object visitLogicalExpr(Expr.Logical expr) {
 
         Object left = evaluate(expr.left);
 
@@ -249,7 +243,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
 
     @Override
-    public Void visitWhileStmt(While stmt) {
+    public Void visitWhileStmt(Stmt.While stmt) {
         while (isTruthy(evaluate(stmt.condition))) {
             execute(stmt.body);
         }
@@ -278,8 +272,15 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     @Override
     public Void visitFunctionStmt(Stmt.Function stmt) {
-        LoxFunction function = new LoxFunction(stmt);
+        LoxFunction function = new LoxFunction(stmt, environment);
         environment.define(stmt.name.lexeme, function);
         return null;
+    }
+
+    @Override
+    public Void visitReturnStmt(Stmt.Return stmt) {
+        Object value = null;
+        if(stmt.value != null) value = evaluate(stmt.value);
+        throw new Return(value);
     }
 }
