@@ -61,3 +61,10 @@ fun count(n) {
 }
 
 count(3);
+
+clock();
+
+print clock()/1000;
+
+print "years:";
+print clock()/31556926;
