@@ -106,4 +106,16 @@ var resolve = "global";
   showA(); 
 }
 
-return "a top level problem";
+class Breakfast {
+    cook() {
+        print "Eggs a-fryin'!";
+    }
+
+    serve(who) {
+        print "Enjoy your breakfast, " + who + ".";
+    }
+}
+
+print Breakfast;
+
+
