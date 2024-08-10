@@ -92,3 +92,16 @@ fun makeCounter() {
 var counter = makeCounter();
 counter();
 counter();
+
+var resolve = "global";
+
+{
+    print "in a block";
+  fun showA() {
+    print resolve;
+  }
+
+  showA();
+  var resolve = "block";
+  showA(); 
+}
