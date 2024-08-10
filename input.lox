@@ -125,4 +125,12 @@ print bagel;
 bagel.smear = "creamcheese";
 print bagel.smear;
 
+class Bacon {
+    eat() {
+        print "Bacon pancakes!";
+    }
+}
+
+Bacon().eat();
+
 
