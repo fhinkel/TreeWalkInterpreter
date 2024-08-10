@@ -122,4 +122,7 @@ class Bagel {}
 var bagel = Bagel();
 print bagel;
 
+bagel.smear = "creamcheese";
+print bagel.smear;
+
 
