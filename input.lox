@@ -105,3 +105,5 @@ var resolve = "global";
   var resolve = "block";
   showA(); 
 }
+
+return "a top level problem";
