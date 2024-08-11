@@ -143,3 +143,11 @@ class Cake {
 var cake = Cake();
 cake.flavor = "German chocolate";
 cake.taste();
+
+class Foo {
+    init() {
+        print "this is the constructor";
+    }
+}
+
+var foo = Foo();
