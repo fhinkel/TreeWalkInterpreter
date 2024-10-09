@@ -1,6 +1,6 @@
 var a = "global a";
   var b = "global b";
-var c = "global c";
+ var c = "global c";
 {
     var a = "outer a";
     var b = "outer b";
