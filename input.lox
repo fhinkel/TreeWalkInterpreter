@@ -6,7 +6,7 @@ var a = "global a";
     var b = "outer b";
     {
         var a = "inner a";
-        print a;
+          print a;
         print b;
         print c;
     }
